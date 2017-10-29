@@ -38,8 +38,13 @@ public class P1IS {
         float importe, coste;
         Motocicleta mo;
         Acama a = new Acama();
-        System.out.print("Introduce precio inicial: ");
-        precio_inicial = a.pedirOpcion();
+        do
+        {
+            System.out.print("Introduce precio inicial: ");
+            precio_inicial = a.pedirOpcion();
+        }
+        while(precio_inicial <= 0);
+        
         do
         {
             System.out.println("Bienvenido a la aplicacion de ACAMA \n");
