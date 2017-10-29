@@ -16,13 +16,13 @@ public class Motocicleta {
     private String marca;
     private String modelo;
     private int cilindrada;
-    private float coste;
+    private float coste, otros_gastos;
     private int id_moto;
     private static int id = 1;
     private Miembro posesion;
     private Acama a;
     
-    Motocicleta(String _matricula, String _marca, String _modelo, int _cilindrada, float _coste)
+    Motocicleta(String _matricula, String _marca, String _modelo, int _cilindrada, float _coste, float _og)
     {
         matricula = _matricula;
         marca = _marca;
@@ -30,6 +30,7 @@ public class Motocicleta {
         cilindrada = _cilindrada;
         coste = _coste;
         id_moto = id;
+        otros_gastos = _og;
         id++;
 
     }
@@ -98,6 +99,14 @@ public class Motocicleta {
     public void setPosesion(Miembro posesion) {
         this.posesion = posesion;
     }
+    
+    public float getOtros_gastos(){
+        return otros_gastos;
+    }
+    
+    public void setOtros_gastos(float otros_gastos){
+        this.otros_gastos = otros_gastos;
+    }
 
     public Acama getA() {
         return a;
@@ -110,11 +119,11 @@ public class Motocicleta {
     public String mostrarMoto()
     {
         if(id_moto < 10)
-            return( "00" + id_moto + " " + matricula + " " + marca + " " + modelo + " de " + cilindrada + " CC, cuyo coste fue de " + coste + " €");
+            return( "00" + id_moto + " " + matricula + " " + marca + " " + modelo + " de " + cilindrada + " CC, cuyo coste fue de " + coste + " €, con otros gastos de " + otros_gastos + "€");
         else if(id_moto < 100)
-            return( "0" + id_moto + " " + matricula + " " + marca + " " + modelo + " de " + cilindrada + " CC, cuyo coste fue de " + coste + " €");
+            return( "0" + id_moto + " " + matricula + " " + marca + " " + modelo + " de " + cilindrada + " CC, cuyo coste fue de " + coste + " €, con otros gastos de " + otros_gastos + "€");
         else
-            return( id_moto + " " + matricula + " " + marca + " " + modelo + " de " + cilindrada + " CC, cuyo coste fue de " + coste + " €");
+            return( id_moto + " " + matricula + " " + marca + " " + modelo + " de " + cilindrada + " CC, cuyo coste fue de " + coste + " €, con otros gastos de " + otros_gastos + "€");
     }
     
 }

@@ -35,9 +35,10 @@ public class P1IS {
         Scanner teclado = new Scanner (System.in);
         String nombre, matricula, marca, modelo, fichero;
         boolean ok=false, opmi, opmo;
-        float importe, coste;
+        float importe, coste, otros_gastos;
         Motocicleta mo;
         Acama a = new Acama();
+        
         do
         {
             System.out.print("Introduce precio inicial: ");
@@ -55,7 +56,8 @@ public class P1IS {
             System.out.println("4. Listar en pantalla los miembros con motos en posesión ");
             System.out.println("5. Listar todas las motos ");
             System.out.println("6. Mostrar las cesiones realizadas ");
-            System.out.println("7. Salir del programa \n");
+            System.out.println("7. Incrementar otros gastos a una moto \n");
+            System.out.println("8. Salir del programa \n");
             
             System.out.print("Dime una opcion: ");
             
@@ -105,11 +107,17 @@ public class P1IS {
                         System.out.print("Coste de la moto: ");
                         coste = a.pedirOpcionFloat();
                         }
-                        while(coste <= 0);
+                        while(coste <= 0);      
                         
-                        System.out.println("");
+                        do
+                        {
+                            System.out.print("Coste de otros gastos: ");
+                            otros_gastos = a.pedirOpcionFloat();
+                        }
+                        while(otros_gastos <= 0);
+                        System.out.println("");                        
                         
-                        mo = new Motocicleta(matricula, marca, modelo, cilindrada, coste);
+                        mo = new Motocicleta(matricula, marca, modelo, cilindrada, coste, otros_gastos);
                         if(!(coste > precio_inicial || coste < 0))
                         {
                             System.out.println("Quien va a tener en posesion la moto? \n");
@@ -255,13 +263,26 @@ public class P1IS {
                     break;
                     
                 case 7:
+                    System.out.print("Incrementar los gastos de una moto. \n ");
+                    System.out.println(a.mostrarMotos());
+                    
+                    System.out.print("Que moto quieres incrementar los gastos: ");
+                    int p= a.pedirOpcion();
+                    
+                    System.out.print("Cuanto quieres incrementar los gastos:  ");
+                    float g = a.pedirOpcionFloat();                    
+ 
+                    a.incrementarGastos(p, g);
+                    
+                    break;
+                    
+                case 8:
                     System.out.print("Como quieres llamar al archivo?: ");
                     fichero = teclado.nextLine();
                     
                     a.guardar(fichero);
                     System.out.println("Hasta pronto!");
                     break;
-                    
                 default:
                     
                     System.out.println("Opcion no válida, elige una de las que sale en el menú \n");
@@ -269,9 +290,8 @@ public class P1IS {
             }
         
         }
-        
-     
-        while(opcion != 7);  
+
+        while(opcion != 8);  
     }   
 }
 

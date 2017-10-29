@@ -350,4 +350,17 @@ public class Acama {
         
         return ok;
     }
+    public void incrementarGastos(int pos, float a)
+    {
+        for( int i = 0; i < miembros.size(); i++)
+        {
+            for( int j = 0; j < miembros.get(i).getMotos().size(); j++)
+            {
+                if(miembros.get(i).getMotos().get(j).getId_moto() == pos)
+                {
+                    miembros.get(i).getMotos().get(j).setOtros_gastos(miembros.get(i).getMotos().get(j).getOtros_gastos()+a);
+                }
+            }
+        }
+    }
 }
