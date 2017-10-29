@@ -58,7 +58,8 @@ public class P1IS {
             System.out.println("6. Mostrar las cesiones realizadas ");
             System.out.println("7. Incrementar otros gastos a una moto ");
             System.out.println("8. Eliminar miembro ");
-            System.out.println("9. Salir del programa \n");
+            System.out.println("9. Muestra miembros con mas cesiones ");
+            System.out.println("10. Salir del programa \n");
             
             System.out.print("Dime una opcion: ");
             
@@ -294,12 +295,18 @@ public class P1IS {
                     break;
                  
                 case 9:
+                    System.out.print("Miembros con mas cesiones \n");
+                    a.masCesiones();
+                    
+                    break;
+                    
+                case 10:
                     System.out.print("Como quieres llamar al archivo?: ");
                     fichero = teclado.nextLine();
                     
                     a.guardar(fichero);
                     System.out.println("Hasta pronto!");
-                    break;
+                    break;  
                     
                 default:
                     
@@ -309,7 +316,7 @@ public class P1IS {
         
         }
 
-        while(opcion != 9);  
+        while(opcion != 10);  
     }   
 }
 

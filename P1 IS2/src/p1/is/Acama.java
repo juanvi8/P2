@@ -381,7 +381,7 @@ public class Acama {
                         do
                         {
                             
-                            System.out.print("Elige el miembro receptor que le quieres ceder la moto: " + miembros.get(emisor-1).getMotos().get(i).mostrarMoto());
+                            System.out.print("Elige el miembro receptor que le quieres ceder la moto: " + miembros.get(emisor-1).getMotos().get(i).mostrarMoto()+" ");
                             receptor = pedirOpcion();
                         }
                         while(receptor == 0);
@@ -403,4 +403,45 @@ public class Acama {
         
         
     }
+    public void masCesiones()
+    {
+        int min = 99999, n=0;
+        int pos;
+        for(int i = 0; i < miembros.size(); i++)
+        {
+            for(int j = 0; i< cesiones.size();i++)
+            {
+                if(miembros.get(i).getMotos().size() < min)
+                    n++;
+            }
+            if(n<min)
+            {
+                min = n;
+                pos = i;
+            }
+                n = 0;
+        }
+        for(int i = 0; i<miembros.size(); i++)
+        {
+                for(int j = 0; j < miembros.get(i).getMotos().size(); j++)
+                {
+              //      if(miembros.get(i) == cesiones.get(j).getReceptor())
+                        n++;
+   
+                }
+                if(n == min)
+                {
+                    System.out.println("El miembro " + miembros.get(i).mostrarMiembro() + " tiene la moto/s ");
+                    for(int z = 0; z < cesiones.size(); z++)
+                    {
+                 //       if(miembros.get(i) == cesiones.get(z).)
+                       // System.out.println(cesiones.get(z).())
+                    }
+                }
+        }
+        
+        
+        return;
+    }
+    
 }
