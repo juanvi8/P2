@@ -363,4 +363,44 @@ public class Acama {
             }
         }
     }
+    
+    public void eliminarMiembro(int emisor, int precio_inicial){
+        boolean opmi;
+        int receptor, moto, i = 0;
+        
+        if(miembros.get(emisor-1).getNum_motos_poder()==0)
+            miembros.remove(emisor-1);
+        else
+        {
+            while(!miembros.get(emisor-1).getMotos().isEmpty())
+            {
+                if(getMiembros().size()>1)
+                {
+                    do
+                    {
+                        do
+                        {
+                            
+                            System.out.print("Elige el miembro receptor que le quieres ceder la moto: " + miembros.get(emisor-1).getMotos().get(i).mostrarMoto());
+                            receptor = pedirOpcion();
+                        }
+                        while(receptor == 0);
+                        opmi = comprobarOpcionMiembro(receptor -1);
+
+                        if(emisor == receptor)
+                            System.out.println("El receptor que ha indicado no existe");
+                    }
+                    while(!opmi || emisor == receptor);
+                    
+                    if(comprobarCoste(getMiembros().get(receptor-1),getMiembros().get(emisor-1).getMotos().get(buscarMotoMiembro(getMiembros().get(emisor-1),i)).getCoste(),precio_inicial))
+                    {
+                        int pos = buscarMotoMiembro(getMiembros().get(emisor-1),i);
+                        cambioMoto(emisor-1,receptor-1,pos);
+                    }
+                }
+            }
+        }
+        
+        
+    }
 }
