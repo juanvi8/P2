@@ -56,7 +56,7 @@ public class Acama {
     }
     
 
-    public boolean comprobarCoste(Miembro m, float coste)
+    public boolean comprobarCoste(Miembro m, float coste, int precio)
     {
         float total = 0;
         boolean ok = true;
@@ -66,7 +66,7 @@ public class Acama {
             total = total + m.getMotos().get(i).getCoste();
         }
         
-        if(total + coste > 6000)
+        if(total + coste > precio)
         {
             System.out.println("No se puede añadir la moto a este miembro porque supera el maximo de coste");
             ok = false;

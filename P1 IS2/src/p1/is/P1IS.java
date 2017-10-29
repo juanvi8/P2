@@ -31,15 +31,15 @@ public class P1IS {
     private String nombre, matricula, marca, modelo;
     */
     public static void main(String[] args) throws IOException {
-        int opcion  , num_motos_poder, cantidad, cilindrada, opcion_moto, opcion_miembro, emisor, receptor, moto;
+        int precio_inicial, opcion  , num_motos_poder, cantidad, cilindrada, opcion_moto, opcion_miembro, emisor, receptor, moto;
         Scanner teclado = new Scanner (System.in);
         String nombre, matricula, marca, modelo, fichero;
         boolean ok=false, opmi, opmo;
         float importe, coste;
         Motocicleta mo;
         Acama a = new Acama();
-       
-        
+        System.out.print("Introduce precio inicial: ");
+        precio_inicial = a.pedirOpcion();
         do
         {
             System.out.println("Bienvenido a la aplicacion de ACAMA \n");
@@ -105,7 +105,7 @@ public class P1IS {
                         System.out.println("");
                         
                         mo = new Motocicleta(matricula, marca, modelo, cilindrada, coste);
-                        if(!(coste > 6000 || coste < 0))
+                        if(!(coste > precio_inicial || coste < 0))
                         {
                             System.out.println("Quien va a tener en posesion la moto? \n");
 
@@ -120,7 +120,7 @@ public class P1IS {
                                 
                                 opmi = a.comprobarOpcionMiembro(opcion_miembro-1);
                                     if(opmi)
-                                        ok = a.comprobarCoste(a.getMiembros().get(opcion_miembro-1), coste);
+                                        ok = a.comprobarCoste(a.getMiembros().get(opcion_miembro-1), coste, precio_inicial);
                             }
                             while(!opmi && !ok);
 
@@ -197,7 +197,7 @@ public class P1IS {
                             }
                             while( moto <= 0);
                             
-                            if(a.comprobarCoste(a.getMiembros().get(receptor-1), a.getMiembros().get(emisor-1).getMotos().get(a.buscarMotoMiembro(a.getMiembros().get(emisor-1), moto-1)).getCoste()))
+                            if(a.comprobarCoste(a.getMiembros().get(receptor-1), a.getMiembros().get(emisor-1).getMotos().get(a.buscarMotoMiembro(a.getMiembros().get(emisor-1), moto-1)).getCoste(),precio_inicial))
                             {
                                 int pos = a.buscarMotoMiembro(a.getMiembros().get(emisor-1), moto-1);
                                 a.cambioMoto(emisor-1, receptor-1, pos);
